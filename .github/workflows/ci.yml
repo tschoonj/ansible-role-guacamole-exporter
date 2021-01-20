@@ -22,4 +22,6 @@ jobs:
           python3 -m pip install molecule[ansible,docker,test,lint]
       - name: Test with molecule
         run: |
+          ls -l
+          ls -l *
           molecule test --all
