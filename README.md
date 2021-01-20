@@ -62,10 +62,10 @@ git submodule update --remote
   roles:
     - role: tschoonj.ansible_role_guacamole_exporter
       vars:
-	guacamole_endpoint: guacamole.example.com
-	guacamole_username: admin
-	guacamole_password: admin
-	guacamole_datasource: mysql
+        guacamole_endpoint: guacamole.example.com
+        guacamole_username: admin
+        guacamole_password: admin
+        guacamole_datasource: mysql
 ```
 
 ## Contributing
