@@ -1,38 +1,85 @@
-Role Name
-=========
+# Ansible role guacamole_exporter
 
-A brief description of the role goes here.
+## ansible-guacamole-exporter
 
-Requirements
-------------
+This role installs and configures [guacamole_exporter](https://github.com/tschoonj/guacamole_exporter) to collect usage metrics from a [Guacamole](https://guacamole.apache.org) clientless remote desktop gateway, and can be scraped by a [Prometheus](https://prometheus.io) instance.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Requirements
 
-Role Variables
---------------
+* Ansible >= 2.10 (Earlier versions may work, but I haven't tested)
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Role Variables
 
-Dependencies
-------------
+The user is _required_ to define the following variables.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+| Name                 | Description                        |
+|----------------------|------------------------------------|
+|`guacamole_exporter_endpoint`   | The address of the Guacamole instance |
+|`guacamole_exporter_username`   | A user with sufficient privileges to access the REST API |
+|`guacamole_exporter_password`   | The corresponding password |
+|`guacamole_exporter_datasource` | The datasource to use in the REST API calls. This may differ from the authentication datasource, and will typically be an SQL implementation |
 
-Example Playbook
-----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+All variables in [default/main.yml](defaults/main.yml) can be overridden
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+| Name           | Default Value | Description                        |
+| -------------- | ------------- | -----------------------------------|
+|`guacamole_exporter_version`| 0.1.1 | the version to install, _latest_ is also accepted|
+|`guacamole_exporter_binary_local_dir`| ""| To allow to use local packages from controller machine instead of github packages|
+|`guacamole_exporter_web_listen_address`| "0.0.0.0:9623"| guacamole_exporter listen addrress|
+|`guacamole_exporter_web_telemetry_path`| "/metrics" | path that will be used to export the metrics |
 
-License
--------
+## Dependencies
 
-BSD
+Nil
 
-Author Information
-------------------
+## Usage
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+### From galaxy
+
+```python
+ansible-galaxy install tschoonj.ansible_role_guacamole_exporter
+```
+
+### git submodule
+
+To add as submodule to your project instead of pulling from galaxy
+
+```bash
+git submodule add -b main https://github.com/tschoonj/ansible-role-guacamole-exporter.git roles/guacamole-exporter
+```
+
+To get role updates
+
+```bash
+git submodule update --remote
+```
+
+## Example Playbook
+
+```yaml
+- hosts: all
+  roles:
+    - role: tschoonj.ansible_role_guacamole_exporter
+      vars:
+	guacamole_endpoint: guacamole.example.com
+	guacamole_username: admin
+	guacamole_password: admin
+	guacamole_datasource: mysql
+```
+
+## Contributing
+
+* Fork the project on GitHub
+* Clone the project
+* Add changes (and tests)
+* Commit and push
+* Create a pull request
+
+## Acknowledgements
+
+This role is inspired by [ansible-node-exporter](https://github.com/cloudalchemy/ansible-node-exporter) and [ansible-prometheus-msteams](https://github.com/slashpai/ansible-prometheus-msteams).
+
+## License
+
+[MIT](LICENSE)
