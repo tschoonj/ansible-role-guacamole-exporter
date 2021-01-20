@@ -15,9 +15,9 @@ jobs:
           python-version: 3.8
       - name: Install dependencies
         run: |
-          sudo apt install docker
+          sudo apt-get update && sudo apt-get install -y libvirt-dev
           python3 -m pip install --upgrade pip
-          python3 -m pip install molecule[ansible,docker,test,lint]
+          python3 -m pip install docker molecule[ansible,docker,test,lint]
       - name: Test with molecule
         run: |
           molecule test --all
