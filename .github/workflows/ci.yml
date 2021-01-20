@@ -12,7 +12,7 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: 3.8
       - name: Install dependencies
         run: |
           sudo apt install docker
@@ -20,6 +20,4 @@ jobs:
           python3 -m pip install molecule[ansible,docker,test,lint]
       - name: Test with molecule
         run: |
-          ls -l
-          ls -l *
           molecule test --all
