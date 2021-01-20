@@ -1,5 +1,10 @@
 # Ansible role guacamole_exporter
 
+![Molecule Test](https://github.com/tschoonj/ansible-role-guacamole-exporter/workflows/Molecule%20Test/badge.svg?branch=master&event=push)
+[![Ansible Role](https://img.shields.io/badge/ansible%20role-tschoonj.ansible_role_guacamole_exporter-blue.svg)](https://galaxy.ansible.com/tschoonj/ansible_role_guacamole_exporter/)
+[![GitHub tag](https://img.shields.io/github/tag/tschoonj/ansible-role-guacamole-exporter.svg)](https://github.com/tschoonj/ansible-role-guacamole-exporter/tags)
+
+
 ## ansible-guacamole-exporter
 
 This role installs and configures [guacamole_exporter](https://github.com/tschoonj/guacamole_exporter) to collect usage metrics from a [Guacamole](https://guacamole.apache.org) clientless remote desktop gateway, and can be scraped by a [Prometheus](https://prometheus.io) instance.
