@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible-role-guacamole-exporter"
+      vars:
+        guacamole_endpoint: "https://guacamole.example.com"
+        guacamole_username: admin
+        guacamole_password: admin
+        guacamole_datasource: mysql
+      include_role:
+        name: "ansible-role-guacamole-exporter"
