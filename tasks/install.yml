@@ -37,6 +37,7 @@
       file:
         path: "/tmp/guacamole_exporter-{{ guacamole_exporter_effective_version }}-linux-{{ go_arch }}"
         state: directory
+        mode: '0755'
       delegate_to: localhost
       check_mode: false
 

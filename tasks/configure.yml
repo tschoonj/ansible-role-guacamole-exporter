@@ -10,7 +10,7 @@
 
 - name: Copy the guacamole_exporter config file
   template:
-    src: guacamole_exporter.env.j2 
+    src: guacamole_exporter.env.j2
     dest: "{{ guacamole_exporter_environment_file }}"
     owner: "{{ _guacamole_exporter_system_user }}"
     group: "{{ _guacamole_exporter_system_group }}"
