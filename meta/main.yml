@@ -1,6 +1,8 @@
 galaxy_info:
   author: Tom Schoonjans
   description: Role for installing guacamole_exporter, which provides Guacamole usage metrics for Prometheus
+  role_name: ansible_role_guacamole_exporter
+  namespace: tschoonj
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
